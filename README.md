@@ -86,7 +86,7 @@ Kliknutím v tabulce na název veličiny (mimo teplotu a vlhkost) se zobrazí po
 
 
 > [!NOTE]
-Firmware lze upgradovat pomocí wifi (**OTA firmware**) na adrese http://**IP adresa monitoru**/update
+Firmware lze upgradovat pomocí wifi (**OTA firmware**) na adrese http://**IP adresa monitoru**/update v sekci **Servis**
 
 
 ## **Poděkování**
