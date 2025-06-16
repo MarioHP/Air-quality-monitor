@@ -45,7 +45,7 @@ Barvy textu dle nameřené hodnoty ppm CO<sub>2</sub>
 ![image](https://github.com/user-attachments/assets/05cfe83a-9df1-44b4-934e-d6a4b8b0d85d)
 
 
-
+Po nečinnosti delší než je výchozí nastavený čas (30 sekund) se automaticky spustí spořič displeje - sníží jas na nastavenou hodnotu (25 %).
 
 **Tlačítko S1** – vedlejší obrazovka , zobrazení a přepínání idividuálních hodnot (smyčka):
 
