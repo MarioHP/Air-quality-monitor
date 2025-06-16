@@ -95,6 +95,8 @@ Fonty a ikony převzaty z tohoto projektu https://github.com/melkati/CO2-Gadget
 ## **Licence**
 Firmware pro monitor kvality vzduchu je svobodný software: můžete jej dále šířit a/nebo upravovat.
 
+
+
 # **Air quality monitor**
 The monitor was designed specifically for the Sensirion SEN66-SIN-T sensor with external power supply via USB-C.
 
@@ -108,7 +110,7 @@ USB-C cable for power and firmware upload
 
 Box (3D printed)
 
-## **Connection:**
+## **Wiring:**
 
 ![image](https://github.com/user-attachments/assets/d38cdb66-6e3e-4a12-88f0-3ed19751da84)
 
