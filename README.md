@@ -97,6 +97,7 @@ Firmware pro monitor kvality vzduchu je svobodný software: můžete jej dále �
 
 
 
+
 # **Air quality monitor**
 The monitor was designed specifically for the Sensirion SEN66-SIN-T sensor with external power supply via USB-C.
 
