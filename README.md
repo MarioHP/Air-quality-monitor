@@ -124,7 +124,7 @@ Default settings in **settings.h**
 - UPDATE_INTERVAL_MS = 15 * 60 * 1000; – data measurement interval in milliseconds (15 minutes)
 - HISTORY_LENGTH = 48; – number of data samples in the graph history for a certain time (12 hours)
 - SCREENSAVER_DELAY_MS = 30000; – screen saver time in milliseconds (30 seconds)
-- BACKLIGHT_BRIGHTNESS = BRIGHTNESS_LOW; – screen saver brightness (25%)
+- BACKLIGHT_BRIGHTNESS = BRIGHTNESS_LOW; – screen saver brightness (25 %)
 
 ### **Display**
 
@@ -141,7 +141,7 @@ Text colors according to measured ppm CO<sub>2</sub> value
 
 ![image](https://github.com/user-attachments/assets/d38cdb66-6e3e-4a12-88f0-3ed19751da84)
 
-After inactivity longer than the default set time (30 seconds), the screen saver will automatically start - it will reduce the brightness to the set value (25%).
+After inactivity longer than the default set time (30 seconds), the screen saver will automatically start - it will reduce the brightness to the set value (25 %).
 
 **S1 button** – secondary screen, display and switch individual values ​​(loop):
 
