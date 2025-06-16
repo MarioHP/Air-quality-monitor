@@ -181,7 +181,7 @@ Clicking on the name of a quantity in the table (except for temperature and humi
 > [!NOTE]
 The firmware can be upgraded via wifi (**OTA firmware**) at http://**Monitor IP address**/update in the **Service** section
 
-## **Acknowledgements**
+## **Credits**
 Fonts and icons taken from this project https://github.com/melkati/CO2-Gadget
 
 ## **License**
