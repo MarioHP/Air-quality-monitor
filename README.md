@@ -30,16 +30,16 @@ Výchozí nastavení v **settings.h**
 
 ## **Displej**
 
-Měření a zobrazení – CO2, Teplota, Relativní vlhkost, pevné částice prachu (PM)
+Měření a zobrazení – CO<sub>2</sub>, Teplota, Relativní vlhkost, pevné částice prachu (PM)
 
 Hlavní obrazovka:
 
 - Teplota (°C)
 - Relativní vlhkost (%)
-- CO2 (ppm) 
-- bargraf CO2 (rozsah 0 ÷ 5000 ppm)
+- CO<sub>2</sub> (ppm) 
+- bargraf CO<sub>2</sub> (rozsah 0 ÷ 5000 ppm)
 
-Barvy textu dle nameřené hodnoty ppm CO2
+Barvy textu dle nameřené hodnoty ppm CO<sub>2</sub>
 
 ![image](https://github.com/user-attachments/assets/05cfe83a-9df1-44b4-934e-d6a4b8b0d85d)
 
@@ -65,7 +65,7 @@ Pro zobrazení stránky webserveru monitoru zadej do prohlížeče IP adresu mon
 
 Stránka webserveru zobrazuje v tabulce všechny hodnoty měřené snímačem Sensirion SEN66-SIN-T:
 
-- CO2
+- CO<sub>2</sub>
 - Teplota
 - Relativní vlhkost
 - pevné částice prachu (PM1.0, PM2.5 PM4.0, PM10)
