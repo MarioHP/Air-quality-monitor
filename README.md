@@ -72,6 +72,7 @@ Stránka webserveru zobrazuje v tabulce všechny hodnoty měřené snímačem Se
 - VOC index
 - NOx index
 
+> [!NOTE]
 Měřené hodnoty je možno získat i ve formátu JSON na adrese http://**IP adresa monitoru**/data
 
 >{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
