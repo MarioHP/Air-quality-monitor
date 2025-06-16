@@ -7,6 +7,8 @@ Sensirion SEN66-SIN-T: https://sensirion.com/products/catalog/SEN66
 
 LilyGO TTGO T-Display: https://lilygo.cc/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board
 
+Kabel s konektorem JST GHT-06V-S: https://www.aliexpress.com/item/1005007295303376.html
+
 USB-C kabel pro napájení a nahrání firmwaru
 
 Krabička (3D tisk)
@@ -106,6 +108,8 @@ The monitor was designed specifically for the Sensirion SEN66-SIN-T sensor with 
 Sensirion SEN66-SIN-T: https://sensirion.com/products/catalog/SEN66
 
 LilyGO TTGO T-Display: https://lilygo.cc/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board
+
+Cable with JST connector GHT-06V-S: https://www.aliexpress.com/item/1005007295303376.html
 
 USB-C cable for power and firmware upload
 
