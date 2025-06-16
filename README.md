@@ -1,5 +1,5 @@
 # **Monitor kvality vzduchu**
-Monitor byl navržen speciálně pro senzor Sensirion SEN66-SIN-T
+Monitor byl navržen speciálně pro senzor Sensirion SEN66-SIN-T s externím napájením přes USB-C.
 
 ## **Hardware:**
 
