@@ -79,7 +79,7 @@ Měřené hodnoty je možno získat i ve formátu JSON na adrese http://**IP adr
 >{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
 
 
-Tlačítky nad tabulkou lze přepínat mezi tabulkou, grafy a servisem. Graf zobrazuje data za posledních 12 hodin u hodnot CO<sub>2</sub>, Teploty a Relativní vlhkosti.
+Tlačítky nad tabulkou lze přepínat mezi tabulkou hodnot, grafy a servisem. Graf zobrazuje data za posledních 12 hodin u hodnot CO<sub>2</sub>, Teploty a Relativní vlhkosti.
 
 
 Kliknutím v tabulce na název veličiny (mimo teplotu a vlhkost) se zobrazí podrobnosti o veličině pod tabulkou. Opětovným kliknutím nebo klikem mimo tabulku se text schová.
