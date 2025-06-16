@@ -1,4 +1,5 @@
 # **Monitor kvality vzduchu**
+Monitor byl navržen speciálně pro senzor Sensirion SEN66-SIN-T
 
 ## **Hardware:**
 
@@ -16,7 +17,7 @@ Krabička (tisk na 3D tiskárně)
 
 ![image](https://github.com/user-attachments/assets/97987479-7970-4fbd-a6ae-965af0acefc4)
 
-## **Software**
+## **Software a funkce**
 
 Výchozí nastavení v **settings.h**
 
@@ -28,7 +29,7 @@ Výchozí nastavení v **settings.h**
 - BACKLIGHT_BRIGHTNESS = BRIGHTNESS_LOW; – jas spořiče displeje (25 %)
 
 
-## **Displej**
+### **Displej**
 
 Měření a zobrazení – CO<sub>2</sub>, Teplota, Relativní vlhkost, pevné částice prachu (PM)
 
@@ -57,7 +58,7 @@ Barvy textu dle nameřené hodnoty ppm CO<sub>2</sub>
 
 **Tlačítko S2** – návrat na hlavní obrazovku
 
-## **Webserver**
+### **Webserver**
 
 Pro zobrazení stránky webserveru monitoru zadej do prohlížeče IP adresu monitoru, která se zobrazí na displeji po přihlášení monitoru do sítě. Stránka je responzivní, přizpůsobí se mobilním zařízením.
 
@@ -78,7 +79,7 @@ Měřené hodnoty je možno získat i ve formátu JSON na adrese http://**IP adr
 >{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
 
 
-Tlačítky nad tabulkou lze přepínat mezi grafy a tabulkou. Graf zobrazuje data za posledních 12 hodin u hodnot CO2, Teploty a Relativní vlhkosti.
+Tlačítky nad tabulkou lze přepínat mezi grafy a tabulkou. Graf zobrazuje data za posledních 12 hodin u hodnot CO<sub>2</sub>, Teploty a Relativní vlhkosti.
 
 
 Kliknutím v tabulce na název veličiny (mimo teplotu a vlhkost) se zobrazí podrobnosti o veličině pod tabulkou. Opětovným kliknutím nebo klikem mimo tabulku se text schová.
