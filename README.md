@@ -83,7 +83,10 @@ Tlačítky nad tabulkou lze přepínat mezi grafy a tabulkou. Graf zobrazuje dat
 
 Kliknutím v tabulce na název veličiny (mimo teplotu a vlhkost) se zobrazí podrobnosti o veličině pod tabulkou. Opětovným kliknutím nebo klikem mimo tabulku se text schová.
 
+## **Poděkování**
+Fonty a ikony převzaty z tohoto projektu https://github.com/melkati/CO2-Gadget
 
-
+## **Licence**
+Firmware pro monitor kvality vzduchu je svobodný software: můžete jej dále šířit a/nebo upravovat.
 
 # **Air quality monitor**
