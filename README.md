@@ -7,7 +7,7 @@ Sensirion SEN66-SIN-T: https://www.laskakit.cz/en/senserion-sen66-sin-t-senzor-k
 
 LilyGO TTGO T-Display: https://www.laskakit.cz/en/lilygo-ttgo-t-displej-esp32-1-14-tft-wifi-modul/
 
-Kabel s konektorem JST GHT-06V-S: https://www.aliexpress.com/item/1005007295303376.html
+Kabel s konektorem JST GHT-06V-S: https://www.laskakit.cz/en/laskakit-airboard-propojovaci-kabel-pro-senserion-sen6x-senzor-kvality-ovzdusi/
 
 USB-C kabel pro napájení a nahrání firmwaru
 
