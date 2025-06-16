@@ -3,7 +3,7 @@ Monitor byl navržen speciálně pro senzor Sensirion SEN66-SIN-T s externím na
 
 ## **Hardware:**
 
-Sensirion SEN66-SIN-T: https://sensirion.com/products/catalog/SEN66
+Sensirion SEN66-SIN-T: https://sensirion.com/products/catalog/SEN66; https://www.laskakit.cz/en/senserion-sen66-sin-t-senzor-kvality-ovzdusi/
 
 LilyGO TTGO T-Display: https://lilygo.cc/products/lilygo%C2%AE-ttgo-t-display-1-14-inch-lcd-esp32-control-board
 
