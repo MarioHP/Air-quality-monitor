@@ -170,7 +170,6 @@ The webserver page displays all values ​​measured by the Sensirion SEN66-SIN
 - NOx index
 
 > [!NOTE]
-
 The measured values ​​can also be obtained in JSON format at http://**Monitor IP address**/data
 
 >{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
