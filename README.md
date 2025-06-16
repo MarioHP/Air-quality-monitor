@@ -112,7 +112,7 @@ Box (3D printed)
 
 ## **Wiring:**
 
-![image](https://github.com/user-attachments/assets/d38cdb66-6e3e-4a12-88f0-3ed19751da84)
+![image](https://github.com/user-attachments/assets/97987479-7970-4fbd-a6ae-965af0acefc4)
 
 
 ## **Software and Features**
@@ -139,7 +139,7 @@ Main screen:
 
 Text colors according to measured ppm CO<sub>2</sub> value
 
-![image](https://github.com/user-attachments/assets/05cfe83a-9df1-44b4-934e-d6a4b8b0d85d)
+![image](https://github.com/user-attachments/assets/d38cdb66-6e3e-4a12-88f0-3ed19751da84)
 
 After inactivity longer than the default set time (30 seconds), the screen saver will automatically start - it will reduce the brightness to the set value (25%).
 
