@@ -25,6 +25,11 @@ Výchozí nastavení v **settings.h**
 
 - WIFI_SSID = ""; – název wifi
 - WIFI_PASSWORD = "";  – heslo na wifi
+
+- IPAddress local_IP(xxx,xxx,xxx,xxx); – IP adresa nonitoru v síti
+- IPAddress gateway(xxx,xxx,xxx,xxx); – výchozí brána
+- IPAddress subnet(255,255,255,0); – maska sítě
+
 - UPDATE_INTERVAL_MS = 15 * 60 * 1000;  – interval měření dat v milisekundách (15 minut)
 - HISTORY_LENGTH = 48; – počet vzorků dat v historii grafu za určitý čas (12 hodin)
 - SCREENSAVER_DELAY_MS = 30000; – čas spořiče displeje v milisekundách (30 sekund)
