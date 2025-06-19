@@ -75,11 +75,6 @@ Stránka webserveru zobrazuje v tabulce všechny hodnoty měřené snímačem Se
 - VOC index
 - NOx index
 
-> [!NOTE]
-Měřené hodnoty je možno získat i ve formátu JSON na adrese http://**IP adresa monitoru**/data
-
->{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
-
 
 Tlačítky nad tabulkou lze přepínat mezi tabulkou hodnot, grafy a servisem. Graf zobrazuje data za posledních 12 hodin u hodnot CO<sub>2</sub>, Teploty a Relativní vlhkosti.
 
@@ -173,11 +168,6 @@ The webserver page displays all values ​​measured by the Sensirion SEN66-SIN
 - Particulate matter (PM1.0, PM2.5 PM4.0, PM10)
 - VOC index
 - NOx index
-
-> [!NOTE]
-The measured values ​​can also be obtained in JSON format at http://**Monitor IP address**/data
-
->{"co2":0.0,"temp":0.0,"rh":0.0,"pm1":0.0,"pm2p5":0.0,"pm4":0.0,"pm10":0.0}
 
 The buttons above the table can be used to switch between the table of values, graphs and service. The graph displays data for the last 12 hours for CO<sub>2</sub>, Temperature and Relative humidity values.
 
