@@ -66,6 +66,8 @@ Po nečinnosti delší než je výchozí nastavený čas (30 sekund) se automati
 **Tlačítko S2** – návrat na hlavní obrazovku
 
 ### **Webserver**
+![webserver_1 github](https://github.com/user-attachments/assets/74aa0455-97f6-462d-b3ab-d2b9fba40bcc)
+
 
 Pro zobrazení stránky webserveru monitoru zadej do prohlížeče IP adresu monitoru, která se zobrazí na displeji po přihlášení monitoru do sítě. Stránka je responzivní, přizpůsobí se mobilním zařízením.
 
