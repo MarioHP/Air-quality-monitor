@@ -126,6 +126,11 @@ Default settings in **settings.h**
 
 - WIFI_SSID = ""; – wifi name
 - WIFI_PASSWORD = ""; – wifi password
+
+- IPAddress local_IP(xxx,xxx,xxx,xxx); – IP address of the monitor on the network
+- IPAddress gateway(xxx,xxx,xxx,xxx); – default gateway
+- IPAddress subnet(255,255,255,0); – network mask
+ 
 - UPDATE_INTERVAL_MS = 15 * 60 * 1000; – data measurement interval in milliseconds (15 minutes)
 - HISTORY_LENGTH = 48; – number of data samples in the graph history for a certain time (12 hours)
 - SCREENSAVER_DELAY_MS = 30000; – screen saver time in milliseconds (30 seconds)
