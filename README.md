@@ -179,7 +179,7 @@ The buttons above the table can be used to switch between the table of values, g
 Clicking on the name of a quantity in the table (except for temperature and humidity) will display the details of the quantity below the table. Clicking again or clicking outside the table will hide the text.
 
 > [!NOTE]
-The firmware can be upgraded via wifi (**OTA firmware**) at  in the **Service** section
+Firmware can be upgraded via wifi (**OTA firmware**) in the **Service section**.
 
 ## **Credits**
 Fonts and icons taken from this project https://github.com/melkati/CO2-Gadget
