@@ -165,6 +165,7 @@ void setup() {
   ElegantOTA.begin(&server);   
 
   server.on("/", HTTP_GET, handleRoot);
+  server.on("/now", HTTP_GET, handleNow);
   server.on("/data", HTTP_GET, handleData);
 
   server.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -242,6 +243,23 @@ String getDateTimeString() {
   return String(dateTimeStr);
 }
 
+void handleNow(AsyncWebServerRequest *request) {
+  updateSensorAndDisplay();  // Čte aktuální hodnoty
+
+  String json = "{";
+  json += "\"co2\":" + String(lastCo2, 1) + ",";
+  json += "\"temp\":" + String(lastTemp, 1) + ",";
+  json += "\"rh\":" + String(lastRh, 1) + ",";
+  json += "\"pm1\":" + String(pm1, 1) + ",";
+  json += "\"pm2p5\":" + String(pm2p5, 1) + ",";
+  json += "\"pm4\":" + String(pm4, 1) + ",";
+  json += "\"pm10\":" + String(pm10, 1) + ",";
+  json += "\"noxIndex\":" + String(noxIndex, 1) + ",";
+  json += "\"vocIndex\":" + String(vocIndex, 1);
+  json += "}";
+
+  request->send(200, "application/json", json);
+}
 
 void handleData(AsyncWebServerRequest *request) {
   String json = "{";
@@ -1014,6 +1032,7 @@ void handleRoot(AsyncWebServerRequest *request) {
       <tr><td>Signál (RSSI):</td><td>)rawliteral" + String(WiFi.RSSI()) + R"rawliteral( dBm</td></tr>
       <tr><td>Verze firmwaru:</td><td>1.0.0</td></tr>
       <tr><td>Aktualizace firmwaru:</td><td><a href="/update" class="soft-link">WiFi (ElegantOTA)</a></td></tr>
+      <tr><td>Aktuální hodnoty:</td><td><a href="/now" class="soft-link">JSON data</a></td></tr>
     </table>
   </div>
 
