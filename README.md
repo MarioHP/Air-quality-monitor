@@ -45,7 +45,7 @@ Hlavní obrazovka:
 - Teplota (°C)
 - Relativní vlhkost (%)
 - CO<sub>2</sub> (ppm) 
-- bargraf CO<sub>2</sub> (rozsah 0 ÷ 5000 ppm)
+- vyhodnocení kvality vzduchu
 
 Barvy textu dle nameřené hodnoty ppm CO<sub>2</sub>
 
@@ -140,7 +140,7 @@ Main screen:
 - Temperature (°C)
 - Relative humidity (%)
 - CO<sub>2</sub> (ppm)
-- CO<sub>2</sub> bar graph (range 0 ÷ 5000 ppm)
+- air quality assessment
 
 Text colors according to measured ppm CO<sub>2</sub> value
 
