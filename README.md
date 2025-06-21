@@ -92,6 +92,10 @@ Kliknutím v tabulce na název veličiny (mimo teplotu a vlhkost) se zobrazí po
 > [!NOTE]
 Firmware lze upgradovat pomocí wifi (**OTA firmware**) v sekci **Servis**
 
+> [!NOTE]
+Aktuální měřené hodnoty lze zobrazit i ve formátu **JSON**
+
+>{"co2":562.0,"temp":24.5,"rh":32.0,"pm1":3.0,"pm2p5":4.0,"pm4":4.6,"pm10":5.0,"noxIndex":1.0,"vocIndex":56.0}
 
 ## **Poděkování**
 Fonty a ikony převzaty z tohoto projektu https://github.com/melkati/CO2-Gadget
@@ -187,6 +191,11 @@ Clicking on the name of a quantity in the table (except for temperature and humi
 
 > [!NOTE]
 Firmware can be upgraded via wifi (**OTA firmware**) in the **Service section**.
+
+> [!NOTE]
+Current measured values ​​can also be displayed in **JSON** format
+
+>{"co2":562.0,"temp":24.5,"rh":32.0,"pm1":3.0,"pm2p5":4.0,"pm4":4.6,"pm10":5.0,"noxIndex":1.0,"vocIndex":56.0}
 
 ## **Credits**
 Fonts and icons taken from this project https://github.com/melkati/CO2-Gadget
