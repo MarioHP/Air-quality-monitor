@@ -740,7 +740,7 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
 
     applyColors();
 
-    // Zobraz alert hned při načtení, pokud je CO₂ > 1500
+    // Zobraz alert hned při načtení, pokud je CO₂ > 2000
     const initialCo2 = parseFloat(document.getElementById('co2value').innerText);
     if (!isNaN(initialCo2) && initialCo2 > 2000) {
       document.getElementById("alert").style.display = "block";
@@ -758,56 +758,63 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
 
     const UPDATE_INTERVAL_MIN = {{UPDATE_INTERVAL_MIN}};
 
-    async function fetchData() {
-    //console.log("fetchData called");
-    const res = await fetch("/data");
-    //console.log("Response ok?", res.ok, "status:", res.status);
-    const data = await res.json();
-    //console.log("Data ⇢", data);
+    async function fetchNow() {
+      const res = await fetch("/now");
+      const now = await res.json();
 
-    updateRow("co2", data.co2, [1000, 2000, 3000]);
-    updateRow("temp", data.temp, [22, 26, 30]);
-    updateRow("rh", data.rh, [30, 60, 80]);
+      updateRow("co2", now.co2, [1000, 2000, 3000]);
+      updateRow("temp", now.temp, [22, 26, 30]);
+      updateRow("rh", now.rh, [30, 60, 80]);
 
-    updateRow("pm1", data.pm1, [10, 25, 50]);
-    updateRow("pm2p5", data.pm2p5, [10, 25, 50]);
-    updateRow("pm4", data.pm4, [10, 25, 50]);
-    updateRow("pm10", data.pm10, [10, 25, 50]);
-    updateRow("voc", data.vocIndex, [1, 3, 5]);
-    updateRow("nox", data.noxIndex, [1, 3, 5]);
+      updateRow("pm1", now.pm1, [10, 25, 50]);
+      updateRow("pm2p5", now.pm2p5, [10, 25, 50]);
+      updateRow("pm4", now.pm4, [10, 25, 50]);
+      updateRow("pm10", now.pm10, [10, 25, 50]);
+      updateRow("voc", now.vocIndex, [1, 3, 5]);
+      updateRow("nox", now.noxIndex, [1, 3, 5]);
 
-    const alertDiv = document.getElementById("alert");
-    alertDiv.style.display = data.co2 > 2000 ? "block" : "none";
+      const alertDiv = document.getElementById("alert");
+      alertDiv.style.display = now.co2 > 2000 ? "block" : "none";
 
-    // Aktuální hodnoty do datových polí
-    co2Data.push(data.co2);
-    tempData.push(data.temp);
-    rhData.push(data.rh);
-
-    if (co2Data.length > HISTORY_LENGTH) co2Data.shift();
-    if (tempData.length > HISTORY_LENGTH) tempData.shift();
-    if (rhData.length > HISTORY_LENGTH) rhData.shift();
-
-    // Zkopíruj správně časová razítka
-    labels = data.timestamps.slice();
-
-    // Použij historii ze serveru
-    co2Chart.data.labels = labels;
-    co2Chart.data.datasets[0].data = data.co2History;
-    co2Chart.update();
-
-    tempChart.data.labels = labels;
-    tempChart.data.datasets[0].data = data.tempHistory;
-    tempChart.update();
-
-    rhChart.data.labels = labels;
-    rhChart.data.datasets[0].data = data.rhHistory;
-    rhChart.update(); 
     }
 
-    setInterval(fetchData, UPDATE_INTERVAL_MIN);
-    fetchData();
+  fetchNow();
 
+    async function fetchData() {
+      //console.log("fetchData called");
+      const res = await fetch("/data");
+      //console.log("Response ok?", res.ok, "status:", res.status);
+      const data = await res.json();
+      //console.log("Data ⇢", data);
+
+      // Aktuální hodnoty do datových polí
+      co2Data.push(data.co2);
+      tempData.push(data.temp);
+      rhData.push(data.rh);
+
+      if (co2Data.length > HISTORY_LENGTH) co2Data.shift();
+      if (tempData.length > HISTORY_LENGTH) tempData.shift();
+      if (rhData.length > HISTORY_LENGTH) rhData.shift();
+
+      // Zkopíruj správně časová razítka
+      labels = data.timestamps.slice();
+
+      // Použij historii ze serveru
+      co2Chart.data.labels = labels;
+      co2Chart.data.datasets[0].data = data.co2History;
+      co2Chart.update();
+
+      tempChart.data.labels = labels;
+      tempChart.data.datasets[0].data = data.tempHistory;
+      tempChart.update();
+
+      rhChart.data.labels = labels;
+      rhChart.data.datasets[0].data = data.rhHistory;
+      rhChart.update(); 
+      }
+
+  setInterval(fetchData, UPDATE_INTERVAL_MIN);
+  fetchData();
 
   </script>
 
