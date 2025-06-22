@@ -114,7 +114,7 @@ void setup() {
   tft.drawString("Pripojuji k WiFi", 120, 65);
 
   // Pokud chceš statickou IP
-  WiFi.config(local_IP, gateway, subnet); 
+  WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS); 
 
   // Odpojit a resetovat WiFi
   WiFi.disconnect(true);
@@ -141,6 +141,12 @@ void setup() {
   tft.drawString("WiFi pripojeno", 120, 50); 
   tft.drawString("IP: " + WiFi.localIP().toString(), 120, 80);
   delay(3000);
+
+  tft.fillScreen(TFT_BLACK);
+  tft.setTextDatum(MC_DATUM);  
+  tft.setTextColor(TFT_MONITORGREY);
+  tft.drawString("Synchronizace casu...", 120, 65); 
+  delay(2000);
 
   // Nastavení a čekání na NTP čas
   configTzTime(timeZone, ntpServer1, ntpServer2);
