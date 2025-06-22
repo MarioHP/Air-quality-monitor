@@ -209,7 +209,6 @@ void setup() {
 
   // První update
   updateSensorAndDisplay();
-  drawWifiQuality();
 
   lastUpdate = millis();
   lastActivity = millis();
@@ -404,7 +403,6 @@ void loop() {
   // Aktualizace dat
   if (millis() - lastUpdate > UPDATE_INTERVAL_MS) {
     updateSensorAndDisplay();
-    drawWifiQuality();
     lastUpdate = millis();
   }
   ElegantOTA.loop();
@@ -533,6 +531,8 @@ void displayData(float co2, float temp, float rh, float pm) {
       tft.setTextColor(TFT_LIGHTGREY);
       tft.setTextDatum(MC_DATUM);
       tft.drawString(kvalita, 120, 126);
+
+      drawWifiQuality();
       break;
     }
 
