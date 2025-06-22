@@ -6,8 +6,8 @@ const char* WIFI_SSID = "";
 const char* WIFI_PASSWORD = "";
 
 // Statické IP nastavení sítě
-const IPAddress local_IP(,,,);
-const IPAddress gateway(,,,);
+const IPAddress local_IP(xxx,xxx,xxx,xxx);
+const IPAddress gateway(xxx,xxx,xxx,xxx);
 const IPAddress subnet(255,255,255,0);
 const IPAddress primaryDNS(8, 8, 8, 8);   // optional
 const IPAddress secondaryDNS(8, 8, 4, 4); // optional
