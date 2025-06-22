@@ -15,7 +15,7 @@ Krabička (3D tisk)
 
 https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
 
-https://makerworld.com/en/models/1540218-air-quality-monitor#profileId-1616373
+https://makerworld.com/en/models/1540218-air-quality-monitor
 
 
 ## **Zapojení:**
@@ -127,7 +127,7 @@ Box (3D printed)
 
 https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
 
-https://makerworld.com/en/models/1540218-air-quality-monitor#profileId-1616373
+https://makerworld.com/en/models/1540218-air-quality-monitor
 
 ## **Wiring:**
 
