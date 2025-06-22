@@ -46,6 +46,7 @@ Hlavní obrazovka:
 - Relativní vlhkost (%)
 - CO<sub>2</sub> (ppm) 
 - vyhodnocení kvality vzduchu
+- síla WiFi signálu
 
 Barvy textu dle nameřené hodnoty ppm CO<sub>2</sub>
 
@@ -152,6 +153,7 @@ Main screen:
 - Relative humidity (%)
 - CO<sub>2</sub> (ppm)
 - air quality assessment
+- WiFi signal strength
 
 Text colors according to measured ppm CO<sub>2</sub> value
 
