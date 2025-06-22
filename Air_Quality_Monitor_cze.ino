@@ -434,7 +434,7 @@ void drawWifiQuality() {
   int quality = getWifiQuality();
 
   int barWidth = 4;
-  int spacing = 1;
+  int spacing = 2;
   int maxBarHeight = 16;
   int totalWidth = barWidth * 4 + spacing * 3;
   
@@ -509,7 +509,7 @@ void displayData(float co2, float temp, float rh, float pm) {
           kvalita = "Nutne vetrat!";
         } else {
           co2Color = TFT_RED;
-          kvalita = "Spatna kvalita, vetrat!";
+          kvalita = "Spatna kvalita,vetrat!";
         }
       }
 
