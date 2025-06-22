@@ -209,6 +209,7 @@ void setup() {
 
   // První update
   updateSensorAndDisplay();
+  drawWifiQuality();
 
   lastUpdate = millis();
   lastActivity = millis();
@@ -403,6 +404,7 @@ void loop() {
   // Aktualizace dat
   if (millis() - lastUpdate > UPDATE_INTERVAL_MS) {
     updateSensorAndDisplay();
+    drawWifiQuality();
     lastUpdate = millis();
   }
   ElegantOTA.loop();
@@ -419,6 +421,44 @@ void showHumidityIcon(int x, int y) {
     if (!displayShowHumidity) return;
     tft.setSwapBytes(true);
     tft.pushImage(x, y, 16, 16, iconHumidity);
+}
+
+int8_t getWifiQuality() {
+  int32_t dbm = WiFi.RSSI();
+  if (dbm <= -100) return 0;
+  if (dbm >= -50) return 100;
+  return 2 * (dbm + 100);
+}
+
+void drawWifiQuality() {
+  int quality = getWifiQuality();
+
+  int barWidth = 4;
+  int spacing = 1;
+  int maxBarHeight = 16;
+  int totalWidth = barWidth * 4 + spacing * 3;
+  
+  int baseX = (240 / 2) - (totalWidth / 2); 
+  int baseY = 18;                            
+
+  tft.fillRect(baseX, baseY - maxBarHeight, totalWidth, maxBarHeight, TFT_BLACK);
+
+  // Výška jednotlivých sloupců (od 1/4 max výšky po plnou)
+  int barHeights[4];
+  for (int i = 0; i < 4; i++) {
+    barHeights[i] = maxBarHeight * (i + 1) / 4;
+  }
+
+  float qualityRatio = quality / 100.0 * 4; // třeba 2.5 znamená 2 plné + poloviční třetí
+
+  for (int i = 0; i < 4; i++) {
+    if (qualityRatio >= i + 1) {
+      tft.fillRect(baseX + i * (barWidth + spacing), baseY - barHeights[i], barWidth, barHeights[i], TFT_LIGHTGREY);
+    } else if (qualityRatio > i) {
+      int partialHeight = (qualityRatio - i) * barHeights[i];
+      tft.fillRect(baseX + i * (barWidth + spacing), baseY - partialHeight, barWidth, partialHeight, TFT_LIGHTGREY);
+    }
+  }
 }
 
 void drawValueWithIcon(int iconY, const String& text, uint16_t color,
@@ -460,7 +500,7 @@ void displayData(float co2, float temp, float rh, float pm) {
       if (!isnan(co2)) {
         if (co2 <= 1000) {
           co2Color = TFT_MONITORGREEN;
-          kvalita = "Dobra kvalita";
+          kvalita = "Dobra kvalita vzduchu";
         } else if (co2 <= 2000) {
           co2Color = TFT_YELLOW;
           kvalita = "Doporuceno vetrat";
