@@ -11,8 +11,11 @@ Kabel s konektorem JST GHT-06V-S: https://www.laskakit.cz/en/laskakit-airboard-p
 
 USB-C kabel pro napájení a nahrání firmwaru
 
-Krabička (3D tisk) https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
+Krabička (3D tisk) 
 
+https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
+
+https://makerworld.com/en/models/1540218-air-quality-monitor#profileId-1616373
 
 
 ## **Zapojení:**
@@ -120,7 +123,11 @@ Cable with JST connector GHT-06V-S: https://www.aliexpress.com/item/100500729530
 
 USB-C cable for power and firmware upload
 
-Box (3D printed) https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
+Box (3D printed) 
+
+https://www.printables.com/model/1334579-monitor-kvality-vzduchu-air-quality-monitor
+
+https://makerworld.com/en/models/1540218-air-quality-monitor#profileId-1616373
 
 ## **Wiring:**
 
