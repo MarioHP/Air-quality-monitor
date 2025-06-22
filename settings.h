@@ -2,12 +2,12 @@
 #define SETTINGS_H
 
 // WiFi přihlašovací údaje
-const char* WIFI_SSID = "MikroTik";
-const char* WIFI_PASSWORD = "vitaj597+";
+const char* WIFI_SSID = "";
+const char* WIFI_PASSWORD = "";
 
 // Statické IP nastavení sítě
-const IPAddress local_IP(192,168,2,124);
-const IPAddress gateway(192,168,2,1);
+const IPAddress local_IP(xxx,xxx,xxx,xxx);
+const IPAddress gateway(xxx,xxx,xxx,xxx);
 const IPAddress subnet(255,255,255,0);
 const IPAddress primaryDNS(8, 8, 8, 8);   // optional
 const IPAddress secondaryDNS(8, 8, 4, 4); // optional
