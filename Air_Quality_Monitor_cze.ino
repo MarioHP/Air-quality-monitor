@@ -21,6 +21,7 @@
 #include <TFT_eSPI.h>
 #include <WiFi.h>
 #include <time.h>
+#include "esp_sntp.h"
 #include <ESPAsyncWebServer.h>
 #include "icons.h"
 #include <driver/ledc.h>
@@ -142,9 +143,9 @@ void setup() {
   delay(3000);
 
   // Nastavení a čekání na NTP čas
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+  configTzTime(timeZone, ntpServer1, ntpServer2);
 
-  if (!waitForTime(10000)) {  // čekat max 10 sekund na NTP
+  if (!waitForTime(15000)) {  // čekat max 15 sekund na NTP
     tft.fillScreen(TFT_BLACK);
     tft.setTextColor(TFT_RED);
     tft.drawString("NTP synch. selhala", 120, 65);

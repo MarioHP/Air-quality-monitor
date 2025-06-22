@@ -2,20 +2,20 @@
 #define SETTINGS_H
 
 // WiFi přihlašovací údaje
-const char* WIFI_SSID = "";
-const char* WIFI_PASSWORD = "";
+const char* WIFI_SSID = "MikroTik";
+const char* WIFI_PASSWORD = "vitaj597+";
 
 // Statické IP nastavení sítě
-const IPAddress local_IP(xxx,xxx,xxx,xxx);
-const IPAddress gateway(xxx,xxx,xxx,xxx);
+const IPAddress local_IP(192,168,2,124);
+const IPAddress gateway(192,168,2,1);
 const IPAddress subnet(255,255,255,0);
 const IPAddress primaryDNS(8, 8, 8, 8);   // optional
 const IPAddress secondaryDNS(8, 8, 4, 4); // optional
 
 // Nastavení času
-const char* ntpServer = "pool.ntp.org";
-const long gmtOffset_sec = 3600;           // Časový posun (ČR = UTC+1)
-const int daylightOffset_sec = 3600;       // Letní čas: +1 hodina
+const char* ntpServer1 = "pool.ntp.org";
+const char* ntpServer2 = "time.nist.gov";
+const char* timeZone = "CET-1CEST,M3.5.0/2,M10.5.0/3"; // středoevropský čas + letní čas
 
 // Interval vzorkování dat (v milisekundách)
 //const unsigned long UPDATE_INTERVAL_MS = 1 * 60 * 1000;  // 1 minuta
