@@ -1,6 +1,10 @@
 # **Monitor kvality vzduchu**
 Monitor byl navržen speciálně pro senzor Sensirion SEN66-SIN-T s externím napájením přes USB-C.
 
+[![Ukázka ovládání a webserveru](https://img.youtube.com/vi/wReb6p8iHjs/0.jpg)](https://www.youtube.com/watch?v=wReb6p8iHjs)
+
+
+
 ## **Hardware:**
 
 Sensirion SEN66-SIN-T: https://www.laskakit.cz/en/senserion-sen66-sin-t-senzor-kvality-ovzdusi/
