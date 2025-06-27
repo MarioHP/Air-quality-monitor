@@ -1,6 +1,6 @@
 #ifndef HTML_H
 #define HTML_H
-// ENGLISH
+// ENGLISH ver. 1.0.1
 const char MAIN_page[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -483,7 +483,7 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       <tr><td>IP address:</td><td>{{IP_ADDRESS}}</td></tr>
       <tr><td>Name (SSID):</td><td>{{SSID}}</td></tr>
       <tr><td>Signal (RSSI):</td><td>{{RSSI}} dBm</td></tr>
-      <tr><td>Firmware version:</td><td>1.0.0</td></tr>
+      <tr><td>Firmware version:</td><td>1.0.1</td></tr>
       <tr><td>Firmware update:</td><td><a href="/update" class="soft-link">WiFi (ElegantOTA)</a></td></tr>
       <tr><td>Current values:</td><td><a href="/now" class="soft-link">JSON data</a></td></tr>
     </table>
@@ -634,119 +634,79 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
     window.addEventListener('resize', setInfoBoxWidth);
     setInfoBoxWidth();  // inicializace při načtení
 
-    // Barvení CO2, PM podle hranic
-    // Funkce pro nastavení barvy buňky podle pravidel
-    function colorCell(rowId, value) {
+    const sensorConfig = {
+      co2:     { thresholds: [1000, 2000, 3000], classes: ['green', 'yellow', 'orange', 'red'] },
+      temp:    { thresholds: [22, 26, 30], classes: ['blue', 'green', 'yellow', 'red'] },
+      rh:      { thresholds: [30, 60, 80], classes: ['blue', 'green', 'yellow', 'red'] },
+      pm1:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
+      pm2p5:   { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
+      pm4:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
+      pm10:    { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
+      voc:     { thresholds: [150, 250, 400], classes: ['green', 'yellow', 'orange', 'red'] },
+      nox:     { thresholds: [20, 150, 300], classes: ['green', 'yellow', 'orange', 'red'] }
+    };
+
+    function colorCellUnified(rowId, value) {
       const row = document.getElementById(rowId);
       if (!row) return;
-      const cell = row.querySelector('td[data-label="Value"]');
+
+      const cell = row.querySelector('td[data-label="Hodnota"]');
       if (!cell) return;
 
-      // Najdi element uvnitř, který má třídu 'value'
       const valueSpan = cell.querySelector('.value');
       if (!valueSpan) return;
 
-      // Reset tříd na valueSpan
-      valueSpan.className = 'value';
+      valueSpan.className = 'value'; // reset classes
+      valueSpan.textContent = value;
 
-      if (rowId === 'co2') {
-        if (value < 1000) valueSpan.classList.add('green');
-        else if (value < 2000) valueSpan.classList.add('yellow');
-        else if (value < 3000) valueSpan.classList.add('orange');
-        else valueSpan.classList.add('red');
-      } else if (rowId === 'temp') {
-        if (value >= 30) valueSpan.classList.add('red');
-      } else if (rowId === 'rh') {
-        if (value > 70) valueSpan.classList.add('blue');
-      } else if (['pm1', 'pm2p5', 'pm4', 'pm10'].includes(rowId)) {
-        if (value < 100) valueSpan.classList.add('green');
-        else if (value < 200) valueSpan.classList.add('yellow');
-        else if (value < 300) valueSpan.classList.add('orange');
-        else valueSpan.classList.add('red');
+      const config = sensorConfig[rowId];
+      if (!config) return;
+
+      const { thresholds, classes } = config;
+
+      for (let i = 0; i <= thresholds.length; i++) {
+        if (i === thresholds.length || value <= thresholds[i]) {
+          valueSpan.classList.add(classes[i]);
+          break;
+        }
       }
     }
-
-
-    // Funkce pro barvu VOC indexu
-    function colorVocCell(value) {
-      if (isNaN(value)) return;
-
-      const vocCell = document.querySelector('#voc[data-label="Value"]');
-      if (!vocCell) return;
-
-      const valueSpan = vocCell.querySelector('.value');
-      if (!valueSpan) return;
-
-      valueSpan.className = 'value';
-
-      if (value <= 50) valueSpan.classList.add('green');
-      else if (value <= 100) valueSpan.classList.add('yellow');
-      else if (value <= 200) valueSpan.classList.add('orange');
-      else valueSpan.classList.add('red');
-    }
-
-    // Funkce pro barvu NOx indexu
-    function colorNoxCell(value) {
-      if (isNaN(value)) return;
-
-      const noxCell = document.querySelector('#nox[data-label="Value"]');
-      if (!noxCell) return;
-
-      const valueSpan = noxCell.querySelector('.value');
-      if (!valueSpan) return;
-
-      valueSpan.className = 'value';
-
-      if (value <= 1) valueSpan.classList.add('green');
-      else if (value <= 3) valueSpan.classList.add('yellow');
-      else if (value <= 10) valueSpan.classList.add('orange');
-      else valueSpan.classList.add('red');
-    }
-
 
     function applyColors() {
-      const rows = ['co2','temp','rh','pm1','pm2p5','pm4','pm10'];
-      rows.forEach(id => {
+      Object.keys(sensorConfig).forEach(id => {
         const row = document.getElementById(id);
-        if (row) {
-          const val = parseFloat(row.cells[1].innerText);
-          colorCell(id, val);
+        if (!row) return;
+
+        const cell = row.querySelector('td[data-label="Hodnota"] .value');
+        if (!cell) return;
+
+        const value = parseFloat(cell.textContent);
+        if (!isNaN(value)) {
+          colorCellUnified(id, value);
         }
       });
-      
-      const vocCell = document.getElementById('voc');
-      if (vocCell) {
-        const vocValue = parseFloat(vocCell.innerText);
-        if (!isNaN(vocValue)) {
-          colorVocCell(vocValue);
-        }
-      }
-
-      const noxCell = document.getElementById('nox');
-      if (noxCell) {
-        const noxValue = parseFloat(noxCell.innerText);
-        if (!isNaN(noxValue)) {
-          colorNoxCell(noxValue);
-        }
-      }
     }
 
     applyColors();
 
+    // Zobraz alert hned při načtení, pokud je CO₂ > 2000
     const initialCo2 = parseFloat(document.getElementById('co2value').innerText);
     if (!isNaN(initialCo2) && initialCo2 > 2000) {
       document.getElementById("alert").style.display = "block";
     }
 
-    function updateRow(id, value, thresholds) {
+    function updateRow(id, value) {
       const row = document.getElementById(id);
       if (!row) return;
+
       const cell = row.cells[1];
       const valueSpan = cell.querySelector('.value');
       if (!valueSpan) return;
-      valueSpan.innerText = value.toFixed(1);
-      colorCell(id, value);
+
+      valueSpan.innerText = (typeof value === 'number' ? value.toFixed(1) : value);
+      colorCellUnified(id, value);
     }
+
 
     const UPDATE_INTERVAL_MIN = {{UPDATE_INTERVAL_MIN}};
 
@@ -754,21 +714,21 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       const res = await fetch("/now");
       const now = await res.json();
 
-      updateRow("co2", now.co2, [1000, 2000, 3000]);
-      updateRow("temp", now.temp, [22, 26, 30]);
-      updateRow("rh", now.rh, [30, 60, 80]);
+      updateRow("co2", now.co2);
+      updateRow("temp", now.temp);
+      updateRow("rh", now.rh);
 
-      updateRow("pm1", now.pm1, [10, 25, 50]);
-      updateRow("pm2p5", now.pm2p5, [10, 25, 50]);
-      updateRow("pm4", now.pm4, [10, 25, 50]);
-      updateRow("pm10", now.pm10, [10, 25, 50]);
-      updateRow("voc", now.vocIndex, [1, 3, 5]);
-      updateRow("nox", now.noxIndex, [1, 3, 5]);
+      updateRow("pm1", now.pm1);
+      updateRow("pm2p5", now.pm2p5);
+      updateRow("pm4", now.pm4);
+      updateRow("pm10", now.pm10);
+      updateRow("voc", now.vocIndex);
+      updateRow("nox", now.noxIndex);
 
       const alertDiv = document.getElementById("alert");
       alertDiv.style.display = now.co2 > 2000 ? "block" : "none";
-
     }
+
 
   fetchNow();
 
@@ -910,29 +870,24 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
         <th style="padding:4px; border:1px solid #ddd;">Meaning</th>
       </tr>
       <tr>
-        <td style="padding:4px; border:1px solid #ddd;">0 ÷ 50</td>
+        <td style="padding:4px; border:1px solid #ddd;">1 – 150</td>
         <td style="padding:4px; border:1px solid #ddd;">Good</td>
         <td style="padding:4px; border:1px solid #ddd;">Low VOC concentration, healthy air</td>
       </tr>
       <tr>
-        <td style="padding:4px; border:1px solid #ddd;">51 ÷ 100</td>
+        <td style="padding:4px; border:1px solid #ddd;">151 – 200</td>
         <td style="padding:4px; border:1px solid #ddd;">Acceptable</td>
         <td style="padding:4px; border:1px solid #ddd;">Slightly elevated VOC concentration</td>
       </tr>
       <tr>
-        <td style="padding:4px; border:1px solid #ddd;">101 ÷ 200</td>
+        <td style="padding:4px; border:1px solid #ddd;">201 – 300</td>
         <td style="padding:4px; border:1px solid #ddd;">Moderate</td>
-        <td style="padding:4px; border:1px solid #ddd;">Increased concentration, may cause discomfort</td>
+        <td style="padding:4px; border:1px solid #ddd;">Decreased air quality, may cause discomfort</td>
       </tr>
       <tr>
-        <td style="padding:4px; border:1px solid #ddd;">201 ÷ 300</td>
+        <td style="padding:4px; border:1px solid #ddd;">301 – 500</td>
         <td style="padding:4px; border:1px solid #ddd;">Poor</td>
-        <td style="padding:4px; border:1px solid #ddd;">High concentration, ventilation recommended</td>
-      </tr>
-      <tr>
-        <td style="padding:4px; border:1px solid #ddd;">301+</td>
-        <td style="padding:4px; border:1px solid #ddd;">Very Poor</td>
-        <td style="padding:4px; border:1px solid #ddd;">Very high concentration, may be harmful</td>
+        <td style="padding:4px; border:1px solid #ddd;">High VOC concentration, ventilation recommended</td>
       </tr>
     </table><br><br>
     `;
