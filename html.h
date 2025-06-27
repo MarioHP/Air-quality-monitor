@@ -637,6 +637,7 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
  
   <script>
 
+
     function setInfoBoxWidth() {
       const table = document.querySelector('.mainTable');
       if (table && infoBox) {
