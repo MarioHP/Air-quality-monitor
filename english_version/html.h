@@ -192,20 +192,20 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       background-color: transparent;
     }   
 
-    .temp-light { background-color: #fff9e6; }    /* do 22°C */
-    .temp-medium { background-color: #ffeba3; }   /* 22-26°C */
-    .temp-high { background-color: #ffd6b3; }     /* 26-30°C */
-    .temp-very-high { background-color: #ffb3b3; } /* nad 30°C */
+    .temp-light     { background-color: #fff9e6; }  /* do 22°C */
+    .temp-medium    { background-color: #ffeba3; }  /* 22-26°C */
+    .temp-high      { background-color: #ffd6b3; }  /* 26-30°C */
+    .temp-very-high { background-color: #ffb3b3; }  /* nad 30°C */
 
-    .rh-light { background-color: #e6f0ff; }  /* RH ≤ 30 */
-    .rh-medium{ background-color: #cde1ff; }  /* 31–60 */
-    .rh-high{ background-color: #b3d1ff; }  /* 61–80 */
-    .rh-very-high { background-color: #9ac2ff; }  /* > 80 */
+    .rh-light       { background-color: #e6f3ff; }  /* RH ≤ 30 */
+    .rh-medium      { background-color: #cce6ff; }  /* 31–60 */
+    .rh-high        { background-color: #b3daff; }  /* 61–80 */
+    .rh-very-high   { background-color: #99cdff; }  /* > 80 */
 
-    .green { background-color: #e6f4e6; }
-    .yellow { background-color: #fff9e6; }
-    .orange { background-color: #ffd6b3; }
-    .red { background-color: #ffb3b3; }
+    .green    { background-color: #e6f4e6; }
+    .yellow   { background-color: #fff9e6; }
+    .orange   { background-color: #ffd6b3; }
+    .red      { background-color: #ffb3b3; }
 
     .statusTable {
       width: 100%;
