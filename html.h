@@ -192,12 +192,21 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       background-color: transparent;
     }   
 
+    .temp-light { background-color: #fff9e6; }    /* do 22°C */
+    .temp-medium { background-color: #ffeba3; }   /* 22-26°C */
+    .temp-high { background-color: #ffd6b3; }     /* 26-30°C */
+    .temp-very-high { background-color: #ffb3b3; } /* nad 30°C */
+
+    .rh-light { background-color: #e6f0ff; }  /* RH ≤ 30 */
+    .rh-medium{ background-color: #cde1ff; }  /* 31–60 */
+    .rh-high{ background-color: #b3d1ff; }  /* 61–80 */
+    .rh-very-high { background-color: #9ac2ff; }  /* > 80 */
+
     .green { background-color: #e6f4e6; }
     .yellow { background-color: #fff9e6; }
     .orange { background-color: #ffd6b3; }
     .red { background-color: #ffb3b3; }
   
-
     .statusTable {
       width: 100%;
       max-width: 600px;
@@ -635,45 +644,52 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       }
     }
 
+    // Zobraz alert hned při načtení, pokud je CO₂ > 2000
+    const initialCo2 = parseFloat(document.getElementById('co2value').innerText);
+    if (!isNaN(initialCo2) && initialCo2 > 2000) {
+      document.getElementById("alert").style.display = "block";
+    }
+
     window.addEventListener('resize', setInfoBoxWidth);
     setInfoBoxWidth();  // inicializace při načtení
 
     const sensorConfig = {
-      co2:     { thresholds: [1000, 2000, 3000], classes: ['green', 'yellow', 'orange', 'red'] },
-      temp:    { thresholds: [22, 26, 30], classes: ['blue', 'green', 'yellow', 'red'] },
-      rh:      { thresholds: [30, 60, 80], classes: ['blue', 'green', 'yellow', 'red'] },
-      pm1:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm2p5:   { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm4:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm10:    { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      voc:     { thresholds: [150, 250, 400], classes: ['green', 'yellow', 'orange', 'red'] },
-      nox:     { thresholds: [20, 150, 300], classes: ['green', 'yellow', 'orange', 'red'] }
+      co2:   { thresholds: [1000, 2000, 3000], classes: ['green', 'yellow', 'orange', 'red'] },
+      temp:  { thresholds: [22, 26, 30],       classes: ['temp-light', 'temp-medium', 'temp-high', 'temp-very-high']},
+      rh:    { thresholds: [30, 60, 80],       classes: ['rh-light', 'rh-medium', 'rh-high', 'rh-very-high'] },
+      pm1:   { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm2p5: { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm4:   { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm10:  { thresholds: [54, 154, 254],     classes: ['green', 'yellow', 'orange', 'red'] },
+      voc:   { thresholds: [150, 250, 400],    classes: ['green', 'yellow', 'orange', 'red'] },
+      nox:   { thresholds: [20, 150, 300],     classes: ['green', 'yellow', 'orange', 'red'] }
     };
 
-    function colorCellUnified(rowId, value) {
+    function colorCell(rowId, value) {
       const row = document.getElementById(rowId);
       if (!row) return;
-
       const cell = row.querySelector('td[data-label="Hodnota"]');
       if (!cell) return;
 
       const valueSpan = cell.querySelector('.value');
       if (!valueSpan) return;
 
-      valueSpan.className = 'value'; // reset classes
-      valueSpan.textContent = value;
+      valueSpan.className = 'value'; // Reset
 
       const config = sensorConfig[rowId];
-      if (!config) return;
+      if (!config || isNaN(value)) return;
 
       const { thresholds, classes } = config;
 
-      for (let i = 0; i <= thresholds.length; i++) {
-        if (i === thresholds.length || value <= thresholds[i]) {
-          valueSpan.classList.add(classes[i]);
+      let colorClass = classes[classes.length - 1]; // default = last = worst
+      for (let i = 0; i < thresholds.length; i++) {
+        if (value <= thresholds[i]) {
+          colorClass = classes[i];
           break;
         }
       }
+
+      valueSpan.classList.add(colorClass);
     }
 
     function applyColors() {
@@ -693,24 +709,15 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
 
     applyColors();
 
-    // Zobraz alert hned při načtení, pokud je CO₂ > 2000
-    const initialCo2 = parseFloat(document.getElementById('co2value').innerText);
-    if (!isNaN(initialCo2) && initialCo2 > 2000) {
-      document.getElementById("alert").style.display = "block";
-    }
-
     function updateRow(id, value) {
       const row = document.getElementById(id);
       if (!row) return;
-
       const cell = row.cells[1];
       const valueSpan = cell.querySelector('.value');
       if (!valueSpan) return;
-
-      valueSpan.innerText = (typeof value === 'number' ? value.toFixed(1) : value);
-      colorCellUnified(id, value);
+      valueSpan.innerText = value.toFixed(1);
+      colorCell(id, value);
     }
-
 
     const UPDATE_INTERVAL_MIN = {{UPDATE_INTERVAL_MIN}};
 
@@ -721,7 +728,6 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       updateRow("co2", now.co2);
       updateRow("temp", now.temp);
       updateRow("rh", now.rh);
-
       updateRow("pm1", now.pm1);
       updateRow("pm2p5", now.pm2p5);
       updateRow("pm4", now.pm4);
@@ -732,7 +738,6 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       const alertDiv = document.getElementById("alert");
       alertDiv.style.display = now.co2 > 2000 ? "block" : "none";
     }
-
 
   fetchNow();
 
