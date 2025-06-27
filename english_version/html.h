@@ -192,11 +192,20 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
       background-color: transparent;
     }   
 
+    .temp-light { background-color: #fff9e6; }    /* do 22°C */
+    .temp-medium { background-color: #ffeba3; }   /* 22-26°C */
+    .temp-high { background-color: #ffd6b3; }     /* 26-30°C */
+    .temp-very-high { background-color: #ffb3b3; } /* nad 30°C */
+
+    .rh-light { background-color: #e6f0ff; }  /* RH ≤ 30 */
+    .rh-medium{ background-color: #cde1ff; }  /* 31–60 */
+    .rh-high{ background-color: #b3d1ff; }  /* 61–80 */
+    .rh-very-high { background-color: #9ac2ff; }  /* > 80 */
+
     .green { background-color: #e6f4e6; }
     .yellow { background-color: #fff9e6; }
     .orange { background-color: #ffd6b3; }
     .red { background-color: #ffb3b3; }
-  
 
     .statusTable {
       width: 100%;
@@ -635,15 +644,15 @@ const char MAIN_page[] PROGMEM = R"rawliteral(
     setInfoBoxWidth();  // inicializace při načtení
 
     const sensorConfig = {
-      co2:     { thresholds: [1000, 2000, 3000], classes: ['green', 'yellow', 'orange', 'red'] },
-      temp:    { thresholds: [22, 26, 30], classes: ['blue', 'green', 'yellow', 'red'] },
-      rh:      { thresholds: [30, 60, 80], classes: ['blue', 'green', 'yellow', 'red'] },
-      pm1:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm2p5:   { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm4:     { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      pm10:    { thresholds: [10, 25, 50], classes: ['green', 'yellow', 'orange', 'red'] },
-      voc:     { thresholds: [150, 250, 400], classes: ['green', 'yellow', 'orange', 'red'] },
-      nox:     { thresholds: [20, 150, 300], classes: ['green', 'yellow', 'orange', 'red'] }
+      co2:   { thresholds: [1000, 2000, 3000], classes: ['green', 'yellow', 'orange', 'red'] },
+      temp:  { thresholds: [22, 26, 30],       classes: ['temp-light', 'temp-medium', 'temp-high', 'temp-very-high']},
+      rh:    { thresholds: [30, 60, 80],       classes: ['rh-light', 'rh-medium', 'rh-high', 'rh-very-high'] },
+      pm1:   { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm2p5: { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm4:   { thresholds: [12, 35.4, 55.4],   classes: ['green', 'yellow', 'orange', 'red'] },
+      pm10:  { thresholds: [54, 154, 254],     classes: ['green', 'yellow', 'orange', 'red'] },
+      voc:   { thresholds: [150, 250, 400],    classes: ['green', 'yellow', 'orange', 'red'] },
+      nox:   { thresholds: [20, 150, 300],     classes: ['green', 'yellow', 'orange', 'red'] }
     };
 
     function colorCellUnified(rowId, value) {
